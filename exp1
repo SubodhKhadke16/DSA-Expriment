@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 5
+
+int stack[MAX];
+int top=-1;
+
+void push(int value){
+    if(top==MAX-1){
+        printf("Stack Overflow");
+        
+    }else{
+        top++;
+        stack[top]=value;
+        printf("%d pushed to stack\n",value);
+    }
+}
+
+int pop(){
+    if(top==-1){
+        printf("Stack Underflow");
+    
+    }else{
+        int popped_value = stack[top];
+        top--;  // Decrement top after accessing the value.
+        return popped_value;
+    }
+}
+
+void display(){
+    if(top==-1){
+        printf("Stack Underflow");
+        
+    }else{
+        printf("The elements in the stack are: ");
+        for(int i=0; i<=top; i++){
+            printf("%d ",stack[i]);
+        }
+    }
+}
+
+//int display_top
+
+int main(){
+    int choice, value;
+    while(1){
+    printf("Plese select an option from the below:\n");
+    printf("1.Push an element.\n");
+    printf("2.Pop an element.\n");
+    printf("3.Display the array.\n");
+    printf("Enter your choice: ");
+    scanf("%d",&choice);
+    
+    switch(choice){
+        case 1: 
+        printf("Enter the value to be inserted: ");
+        scanf("%d",&value);
+        push(value);
+        printf("\n\n");
+        break;
+        
+        case 2:
+        int temp= pop();
+        printf("The element you poped is %d",temp);
+        printf("\n\n");
+        break;
+        
+        case 3: 
+        display();
+        printf("\n\n");
+        break;
+        
+        default:
+        printf("ERROR");
+    }
+    }
+}
